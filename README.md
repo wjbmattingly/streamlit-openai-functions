@@ -1,4 +1,4 @@
-# Streamlit Functions App
+# Streamlit OpenAI Functions Prototype App
 
 ## Introduction
 Welcome to the Streamlit Functions App repository! This repository houses a Streamlit application that allows users to automatically generate functions using the OpenAI API. The main file to run the application is `Home.py`. Streamlit Functions App aims to simplify the process of utilizing the OpenAI API by providing an interface for creating and managing functions. 

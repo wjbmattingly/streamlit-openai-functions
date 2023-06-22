@@ -4,7 +4,7 @@ import json
 
 open_ai_key = st.text_input("OpenAI API Key")
 openai.api_key = open_ai_key
-st.title("Streamlit OpenAI Function Creator")
+st.title("OpenAI Function Prototype Creation App")
 display_template = st.expander("Show OpenAI Examplel")
 display_template.markdown(
 
