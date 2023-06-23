@@ -51,16 +51,23 @@ num_properties = st.number_input("Number of Properties", 1, 3)
 role = st.selectbox("Role", ["user"])
 content = st.text_area("Message")
 
+st.write("---")
 tabs = st.tabs([f"Property {i}" for i in range(num_properties)])
 
 properties = {}
+required = []
 
 for i, tab in enumerate(tabs):
     property_name = tab.text_input(f"Property {i} Name", key=f"property_name_{i}")
-    property_type = tab.selectbox(f"Property {i} Type", ["string"], key=f"property_type_{i}")
-    property_description = tab.text_input(f"Property {i} Description", key=f"property_description_{i}")
+    property_type = tab.selectbox(f"Property {i} Type", ["string", "boolean", "number", "date"], key=f"property_type_{i}")
+    property_description = tab.text_area(f"Property {i} Description", key=f"property_description_{i}")
+    property_required = tab.checkbox("Is it required?", key=f"property_required_{i}")
+    if property_required:
+        required.append(property_name)
+
     properties[property_name] = {"type": property_type, "description": property_description}
 
+st.write("---")
 messages = [{"role": role, "content": content}]
 
 functions = [{
@@ -71,6 +78,7 @@ functions = [{
 
         "type": "object",
         "properties": properties,
+        "required": required
     }
 }]
 
